@@ -4,10 +4,12 @@ echo off
 set "base_game_directory=D:\Game Dev\Games\"
 :: The subfolder which contains your .godot file
 set "game_folder=game"
-:: Directory you installed Godot
-set "godot_directory=D:\Game Dev\Godot\godot"
 :: Location you would like to place exported builds
 set "build_exports_directory=D:\Game Dev\Games\Deployed\game"
+
+:: Directory you installed Godot
+set "godot_directory=D:\Game Dev\Godot\godot"
+
 
 :: Itch.io user where the game is published
 set "itch_user=my_user"
