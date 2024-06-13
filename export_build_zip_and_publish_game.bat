@@ -32,7 +32,7 @@ echo "Build complete, creating windows zip in %build_exports_directory%\windows\
 7z a -tzip "%build_exports_directory%\windows.zip" "%build_exports_directory%\windows\*"
 
 echo "Windows build successfully zipped, attempting to push new version to itch.io at %itch_user%/%1:windows"
-butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\windows.zip" zyjin/%1:windows
+butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\windows.zip" "%itch_user%/%1:windows"
 echo "Windows build successfully pushed to itch.io!"
 
 :: BUILD AND PUBLISH WEB VERSION
@@ -42,18 +42,20 @@ echo "Build complete, creating web zip in %build_exports_directory%\web\"
 7z a -tzip "%build_exports_directory%\web.zip" "%build_exports_directory%\web\*"
 
 echo "Web build successfully zipped, attempting to push new version to itch.io at %itch_user%/%1:html"
-butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" zyjin/%1:windows
+butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" "%itch_user%/%1:html"
 echo "Web build successfully pushed to itch.io!"
 
-:: BUILD AND PUBLISH WEB VERSION
-echo "Attempting to create web build with template %web_build_name%"
-"%godot_directory%" --headless --export-release "%web_build_name%"
-echo "Build complete, creating web zip in %build_exports_directory%\web\"
-7z a -tzip "%build_exports_directory%\web.zip" "%build_exports_directory%\web\*"
+:: BUILD AND PUBLISH Mac VERSION
+echo "Attempting to create Mac build with template %mac_build_name%"
+"%godot_directory%" --headless --export-release "%mac_build_name%"
+echo "Build complete, creating mac zip in %build_exports_directory%\mac\"
+7z a -tzip "%build_exports_directory%\mac.zip" "%build_exports_directory%\mac\*"
 
-echo "Web build successfully zipped, attempting to push new version to itch.io at %itch_user%/%1:html"
-butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" zyjin/%1:windows
-echo "Web build successfully pushed to itch.io!"
+echo "Mac build successfully zipped, attempting to push new version to itch.io at %itch_user%/%1:mac"
+butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\mac.zip" "%itch_user%/%1:mac"
+echo "Mac build successfully pushed to itch.io!"
+
+
 
 @REM "D:\Game Dev\Godot\godot" --headless --export-release "Web - Release"
 @REM 7z a -tzip "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" "D:\Game Dev\Games\Deployed\Ar-Tactica\web\*"
