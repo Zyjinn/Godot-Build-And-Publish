@@ -21,7 +21,7 @@ echo "Godot install located at %godot_directory%"
 @REM "%godot_directory%" --headless --export-release %windows_build_name%
 
 :: FIND THE GAME DIRECTORY
-echo "trying to find game %1 in directory %base_game_directory%%game_folder%\GDProject"
+echo trying to find game "%1" in directory "%base_game_directory%%game_folder%\GDProject"
 cd "%base_game_directory%%game_folder%\"GDProject
 
 
@@ -55,20 +55,12 @@ echo "Mac build successfully zipped, attempting to push new version to itch.io a
 butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\mac.zip" "%itch_user%/%1:mac"
 echo "Mac build successfully pushed to itch.io!"
 
+:: BUILD AND PUBLISH Linux VERSION
+echo "Attempting to create linux build with template %linux_build_name%"
+"%godot_directory%" --headless --export-release "%linux_build_name%"
+echo "Build complete, creating linux zip in %build_exports_directory%\linux\"
+7z a -tzip "%build_exports_directory%\linux.zip" "%build_exports_directory%\linux\*"
 
-
-@REM "D:\Game Dev\Godot\godot" --headless --export-release "Web - Release"
-@REM 7z a -tzip "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" "D:\Game Dev\Games\Deployed\Ar-Tactica\web\*"
-
-@REM "D:\Game Dev\Godot\godot" --headless --export-release "macOS - Release"
-@REM 7z a -tzip "D:\Game Dev\Games\Deployed\Ar-Tactica\mac.zip" "D:\Game Dev\Games\Deployed\Ar-Tactica\mac\*"
-
-@REM "D:\Game Dev\Godot\godot" --headless --export-release "Linux/X11 - Release"
-@REM 7z a -tzip "D:\Game Dev\Games\Deployed\Ar-Tactica\linux.zip" "D:\Game Dev\Games\Deployed\Ar-Tactica\linux\*"
-
-
-@REM butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\linux.zip" zyjin/%1:linux
-@REM butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\mac.zip" zyjin/%1:mac
-@REM butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\web.zip" zyjin/%1:html
-
-cd "%tool_install_directory%"
+echo "linux build successfully zipped, attempting to push new version to itch.io at %itch_user%/%1:linux"
+butler push "D:\Game Dev\Games\Deployed\Ar-Tactica\linux.zip" "%itch_user%/%1:linux"
+echo "linux build successfully pushed to itch.io!"
