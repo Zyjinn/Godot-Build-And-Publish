@@ -1,24 +1,8 @@
 :: Configure the settings for this batch file here
 echo off
-:: Set this to the directory where your game folder is located
-set "tool_install_directory=D:\Game Dev\DeploymentTools\Build Script"
-set "base_game_directory=D:\Game Dev\Games\Prototypes\"
-set "godot_directory=D:\Game Dev\Godot\godot"
-set "build_exports_directory=D:\Game Dev\Games\Deployed\Ar-Tactica"
-:: This is the 1st parameter in the script (redundant)
-set "game_folder=Ar-Tactica"
-set "itch_user=zyjin"
-set "windows_build_name=Windows Desktop - Release"
-set "web_build_name=Web - Release"
-set "mac_build_name=macOS - Release"
-set "linux_build_name=Linux/X11 - Release"
+CALL config.bat
 
 echo "Godot install located at %godot_directory%"
-
-@REM TESTING
-@REM echo "NAVIGATE TO:" "%base_game_directory%%game_folder%\GDProject"
-@REM echo 7z a -tzip "%build_exports_directory%\windows.zip" "%build_exports_directory%\windows\*"
-@REM "%godot_directory%" --headless --export-release %windows_build_name%
 
 :: FIND THE GAME DIRECTORY
 echo trying to find game "%1" in directory "%base_game_directory%%game_folder%\GDProject"
