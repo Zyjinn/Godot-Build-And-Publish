@@ -1,11 +1,11 @@
 echo off
 
 :: Top-level folder where your games are kept
-set "base_game_directory=D:\Game Dev\Games\Prototypes\"
+set "base_game_directory=D:\Game Dev\Games\"
 :: The subfolder which contains your .godot file
-set "game_folder=Birdodoro\GDProject"
+set "game_folder={Godot Project Folder Name}"
 :: Location you would like to place exported builds
-set "build_exports_directory=D:\Game Dev\Games\Deployed\Toridoro"
+set "build_exports_directory=D:\Game Dev\Games\{Your Game Folder}"
 
 :: Directory you installed Godot
 set "godot_directory=D:\Game Dev\Godot\Godot"
